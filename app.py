@@ -29,13 +29,23 @@ def cadastrar_restaurante():
     input("Digite uma tecla para voltar ao menu principal\n")
     main()
 
+def listar_restaurantes():
+    os.system("cls")
+    print("Lista dos restaurantes\n")
+
+    for restaurante in restaurantes:
+        print(f"-{restaurante}")
+
+    input("\nDigite uma tecla para voltar ao menu principal\n")
+    main()
+
 def escolher_opcao():
     try:
         opcao_escolhida = int(input("Escolha uma opção: "))
         if opcao_escolhida == 1:
             cadastrar_restaurante()
         elif opcao_escolhida == 2:
-            print("Listar restaurantes")
+            listar_restaurantes()
         elif opcao_escolhida == 3:
             print("Ativar restaurante")
         elif opcao_escolhida == 4:
