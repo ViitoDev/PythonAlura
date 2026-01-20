@@ -1,5 +1,7 @@
 import os
 
+restaurantes = ["Pizzaria do Rossi","Caldinho do Du"]
+
 def exibir_nome():
     print("Delivery App\n")
 
@@ -15,20 +17,32 @@ def finalizar_app():
 
 def opcao_invalida():
     print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal")
+    input("Digite uma tecla para voltar ao menu principal:\n")
+    main()
+
+def cadastrar_restaurante():
+    os.system("cls")
+    print("Cadastro de novos restaurantes")
+    nome_restaurante = input("Digite o nome do restaurante que deseja cadastrar:\n")
+    restaurantes.append(nome_restaurante)
+    print(f"O restaurante {nome_restaurante} foi cadastrado com sucesso!")
+    input("Digite uma tecla para voltar ao menu principal\n")
     main()
 
 def escolher_opcao():
-    opcao_escolhida = int(input("Escolha uma opção: "))
-    if opcao_escolhida == 1:
-        print("Cadastrar restaurante")
-    elif opcao_escolhida == 2:
-        print("Listar restaurantes")
-    elif opcao_escolhida == 3:
-        print("Ativar restaurante")
-    elif opcao_escolhida == 4:
-        finalizar_app()
-    else:
+    try:
+        opcao_escolhida = int(input("Escolha uma opção: "))
+        if opcao_escolhida == 1:
+            cadastrar_restaurante()
+        elif opcao_escolhida == 2:
+            print("Listar restaurantes")
+        elif opcao_escolhida == 3:
+            print("Ativar restaurante")
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
         opcao_invalida()
 
 def main():
