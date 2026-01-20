@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ["Pizzaria do Rossi","Caldinho do Du"]
+restaurantes = [{"nome" : "Bar do Duh", "categoria" : "Bar", "ativo": True},
+                {"nome" : "Espetinho do Vito", "categoria" : "Espetaria", "ativo": True},
+                {"nome" : "Pastelaria do Rossi", "categoria" : "Pastelaria", "ativo": False},]
 
 def exibir_nome():
     print("Delivery App\n")
@@ -30,14 +32,20 @@ def subtitulo(texto):
 def cadastrar_restaurante():
     subtitulo("Cadastro de novos restaurantes")
     nome_restaurante = input("Digite o nome do restaurante que deseja cadastrar:\n")
-    restaurantes.append(nome_restaurante)
+    categoria = input(f"Digite o nome da categoria do restaurante {nome_restaurante}")
+    restaurant_data =  {"nome":nome_restaurante, "categoria":categoria, "ativo":False}
+    restaurantes.append(restaurant_data)
     print(f"O restaurante {nome_restaurante} foi cadastrado com sucesso!")
     menu_principal()
 
 def listar_restaurantes():
     subtitulo("Lista dos restaurantes")
+
     for restaurante in restaurantes:
-        print(f"-{restaurante}")
+        nome_restaurante = restaurante["nome"]
+        categoria = restaurante["categoria"]
+        ativo = restaurante["ativo"]
+        print(f"-{nome_restaurante} | {categoria} | {ativo}")
 
     menu_principal()
 
