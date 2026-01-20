@@ -1,1 +1,5 @@
-print("Hello World!")
+print("Delivery App\n")
+print("1. Cadastrar restaurante")
+print("2. Listar resturante")
+print("3. Ativar restaurante")
+print("4. Sair")
