@@ -10,7 +10,7 @@ def exibir_nome():
 def exibir_opcoes():
     print("1. Cadastrar restaurante")
     print("2. Listar resturante")
-    print("3. Ativar restaurante")
+    print("3. Alterar estado do restaurante")
     print("4. Sair\n")
 
 def finalizar_app():
@@ -26,7 +26,10 @@ def opcao_invalida():
 
 def subtitulo(texto):
     os.system("cls")
+    linha = '*' * (len(texto) + 4)
+    print(linha)
     print(texto)
+    print(linha)
     print()
 
 def cadastrar_restaurante():
@@ -41,11 +44,13 @@ def cadastrar_restaurante():
 def listar_restaurantes():
     subtitulo("Lista dos restaurantes")
 
+    print(f'{'Nome do restaurante'.ljust(21)} | {'categoria'.ljust(20)} | {'status'.ljust(21)}')
+
     for restaurante in restaurantes:
         nome_restaurante = restaurante["nome"]
         categoria = restaurante["categoria"]
-        ativo = restaurante["ativo"]
-        print(f"-{nome_restaurante} | {categoria} | {ativo}")
+        ativo = 'ativado' if restaurante["ativo"] else 'desativado'
+        print(f"-{nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo.ljust(20)}")
 
     menu_principal()
 
@@ -60,7 +65,7 @@ def alterar_estado():
             restaurante['ativo'] = not restaurante["ativo"]
             mensagem = f'O restaurante{nome_restaurante} foi ativado com sucesso!' if restaurante ['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso!'
             print(mensagem)
-            
+
     if not restaurante_encontrado:
         print('O restaurante não foi encontrado...')
 
